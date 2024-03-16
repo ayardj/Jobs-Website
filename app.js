@@ -11,6 +11,8 @@ const rateLimiter = require('express-rate-limit')
 const express = require('express');
 const app = express();
 
+const cookieParser = require('cookie-parser')
+
 //coonectDb
 const connectDb = require('./db/connect')
 const autheticateUser = require('./middleware/authentication')
@@ -30,6 +32,8 @@ app.use(
   })
   )
 app.use(express.json());
+app.use(cookieParser());
+ 
 app.use(helmet())
 app.use(cors())
 app.use(xss())
